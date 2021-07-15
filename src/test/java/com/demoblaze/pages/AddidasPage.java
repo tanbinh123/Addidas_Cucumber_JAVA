@@ -23,6 +23,11 @@ public class AddidasPage {
     @FindBy(xpath = "(//a[@class='nav-link'])[1]")
     public WebElement homeLink;
 
+    @FindBy(xpath = "//a[.='Cart']")
+    public WebElement cart;
+
+
+
 
     public int productAdder(String category, String product){
         Driver.getDriver().findElement(By.xpath("//a[.='"+category+"']")).click();
@@ -42,6 +47,16 @@ public class AddidasPage {
         BrowserUtils.sleep(1);
 
         homeLink.click();
+
+        return amount;
+    }
+    public int productRemover(String product){
+
+        cart.click();
+        BrowserUtils.sleep(1);
+        int amount = Integer.parseInt(Driver.getDriver().findElement(By.xpath("//table//tr/td[.='"+product+"']/..//td[3]")).getText());
+        Driver.getDriver().findElement(By.xpath("//table//tr//td[.='"+product+"']/..//td[.='Delete']/a")).click();
+        BrowserUtils.sleep(3);
 
         return amount;
     }

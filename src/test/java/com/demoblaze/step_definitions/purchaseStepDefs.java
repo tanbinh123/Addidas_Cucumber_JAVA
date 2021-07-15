@@ -3,6 +3,7 @@ package com.demoblaze.step_definitions;
 import com.demoblaze.pages.AddidasPage;
 import com.demoblaze.utilities.ConfigurationReader;
 import com.demoblaze.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
@@ -19,7 +20,14 @@ public class purchaseStepDefs {
     @When("User adds {string} from {string}")
     public void user_adds_from(String product, String category) {
         expectedPurchaseAmount += addidasPage.productAdder(category, product);
+        System.out.println("expectedPurchaseAmount = " + expectedPurchaseAmount);
 
     }
 
+
+    @And("User remove {string}")
+    public void userRemove(String product) {
+        expectedPurchaseAmount -= addidasPage.productRemover(product);
+        System.out.println("expectedPurchaseAmount = " + expectedPurchaseAmount);
+    }
 }
