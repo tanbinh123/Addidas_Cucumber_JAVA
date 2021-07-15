@@ -3,4 +3,5 @@ Feature: Adidas Order Placement Functionality
 
   Scenario: Placing a successful order
     Given User is on the Home Page
+    When User adds "Sony vaio i5" from "Laptops"
 
